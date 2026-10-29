@@ -1,0 +1,257 @@
+{
+  "admins": [
+    {
+      "id": "admin-1",
+      "username": "admin",
+      "name": "Security Administrator",
+      "email": "admin@passkey.gov.in",
+      "passwordHash": "f9c3895b180944b225b544191a61522265435f20c27d49ff97e5419768df47a0ef3d2d6996aa3ebcfa6ed6a712966cdc7ac492a1861f1011ef89d979f05abcaa",
+      "salt": "fixed-admin-salt-2026"
+    }
+  ],
+  "visitors": [
+    {
+      "id": "vis-1",
+      "name": "Aarav Sharma Updated",
+      "visitorName": "Aarav Sharma Updated",
+      "phone": "+91 98765 43210",
+      "phoneNumber": "+91 98765 43210",
+      "phoneNormalized": "+919876543210",
+      "email": "aarav.sharma@tcs-consulting.in",
+      "requiresPasswordChange": false,
+      "hasRegisteredBiometric": true,
+      "hasRegisteredPin": true,
+      "pinHash": "82465552a250532111f150b75f894ca5f3b051d7a7d10cc23b4ea7592ee8fb1f",
+      "pinSalt": "fixed-pin-vis1-salt",
+      "passwordHash": "ea561fca1bf61e9162d2d67fabf3bdf9a4fc234942ea1bffe42d863a532027d7e4a1b3f937b96450365fa105fb87f7073efd290f1dd3b07180e6a5e87e3d0f84",
+      "salt": "6d99d8495e75ae5d1706464a0ab8b5d7",
+      "createdAt": "2026-10-25T14:17:03.432Z"
+    },
+    {
+      "id": "vis-2",
+      "name": "Priya Patel",
+      "visitorName": "Priya Patel",
+      "phone": "+91 98201 23456",
+      "phoneNumber": "+91 98201 23456",
+      "phoneNormalized": "+919820123456",
+      "email": "priya.patel@biotech-innovations.in",
+      "requiresPasswordChange": false,
+      "hasRegisteredBiometric": true,
+      "hasRegisteredPin": true,
+      "pinHash": "f99be7f0fff91aa887f52709194a2e9d5cbc2ffe946c9c4631dcf2a14171a7f3",
+      "pinSalt": "fixed-pin-vis2-salt",
+      "passwordHash": "05b11db50624d2dacc20cb07135c0de69784ce130d54fa5a4a52c7f12086eb1808c2312f13ec6b5dcbcbb45433b9441caddce99c1d8ae9311d6cb50b10060fc1",
+      "salt": "fixed-vis2-salt-2026",
+      "createdAt": "2026-10-26T14:17:03.432Z"
+    },
+    {
+      "id": "vis-3",
+      "name": "Vikram Malhotra",
+      "visitorName": "Vikram Malhotra",
+      "phone": "+91 98450 67890",
+      "phoneNumber": "+91 98450 67890",
+      "phoneNormalized": "+919845067890",
+      "email": "vikram.malhotra@deloitte-security.in",
+      "requiresPasswordChange": false,
+      "hasRegisteredBiometric": true,
+      "hasRegisteredPin": true,
+      "pinHash": "13283884e7ffa6ca5b67ec7ada4f8ab7bd84ad1bc9f6b3bc8d5e3ac4d505be23",
+      "pinSalt": "fixed-pin-vis3-salt",
+      "passwordHash": "920380dac742dd46bd8f99eb1c5ee76910c6e7eb22aa540b9457a392a37b1e4759d1b95b0ece0a27da53f5a22953d91c75bb55e2e0c94fc02bdcefa68fc1df60",
+      "salt": "fixed-vis3-salt-2026",
+      "createdAt": "2026-10-27T02:17:03.432Z"
+    },
+    {
+      "id": "vis-4",
+      "name": "Ananya Iyer",
+      "visitorName": "Ananya Iyer",
+      "phone": "+91 97123 45678",
+      "phoneNumber": "+91 97123 45678",
+      "phoneNormalized": "+919712345678",
+      "email": "ananya.iyer@iitb-guest.ac.in",
+      "requiresPasswordChange": true,
+      "hasRegisteredBiometric": false,
+      "hasRegisteredPin": false,
+      "passwordHash": "ac4c01a39b5281945c08ed0669de3e92da48a3cc5ef17a17a5b0a214551a00539b25521687e51ddc67ed77820987ebbf166d942980f8e691f2703696b4dd864e",
+      "salt": "fixed-vis4-salt-2026",
+      "createdAt": "2026-10-27T12:17:03.432Z"
+    }
+  ],
+  "passes": [
+    {
+      "id": "PK-8041",
+      "passNumber": "PK-8041",
+      "visitorId": "vis-1",
+      "visitorName": "Aarav Sharma",
+      "visitorPhone": "+91 98765 43210",
+      "phoneNumber": "+91 98765 43210",
+      "visitorEmail": "aarav.sharma@tcs-consulting.in",
+      "company": "Tata Consultancy Services",
+      "purpose": "Datacenter Architecture & Quantum Computing Review",
+      "allowedZones": [
+        "Main Reception",
+        "Engineering Laboratory",
+        "Office Floor"
+      ],
+      "validFrom": "2026-10-27T13:17:03.432Z",
+      "expiresAt": "2026-10-27T20:17:03.432Z",
+      "validUntil": "2026-10-27T20:17:03.432Z",
+      "status": "ACTIVE",
+      "isRevoked": false,
+      "digitalSignature": "MEUCIQDfYQiYY5X1LSngRxRxsjHtZfgSlXkBKIJViysURStvkgIgCinzomj6UL26Yiv8h4llg5ec1VXKyc90AvNYJHY10E8",
+      "notes": "Visitor cleared for engineering wing",
+      "createdAt": "2026-10-27T13:17:03.432Z"
+    },
+    {
+      "id": "PK-8042",
+      "passNumber": "PK-8042",
+      "visitorId": "vis-2",
+      "visitorName": "Priya Patel",
+      "visitorPhone": "+91 98201 23456",
+      "phoneNumber": "+91 98201 23456",
+      "visitorEmail": "priya.patel@biotech-innovations.in",
+      "company": "Biotech Innovations India",
+      "purpose": "HVAC Air Handling Unit Inspection & Lab Certification",
+      "allowedZones": [
+        "Main Reception",
+        "Restricted Area"
+      ],
+      "validFrom": "2026-10-27T06:17:03.432Z",
+      "expiresAt": "2026-10-27T12:17:03.432Z",
+      "validUntil": "2026-10-27T12:17:03.432Z",
+      "status": "EXPIRED",
+      "isRevoked": false,
+      "notes": "Contractor service pass - expired",
+      "createdAt": "2026-10-27T06:17:03.432Z"
+    },
+    {
+      "id": "PK-8043",
+      "passNumber": "PK-8043",
+      "visitorId": "vis-3",
+      "visitorName": "Vikram Malhotra",
+      "visitorPhone": "+91 98450 67890",
+      "phoneNumber": "+91 98450 67890",
+      "visitorEmail": "vikram.malhotra@deloitte-security.in",
+      "company": "Deloitte Security Advisory",
+      "purpose": "Physical Datacenter Compliance & Security Audit",
+      "allowedZones": [
+        "Main Reception",
+        "Restricted Area"
+      ],
+      "validFrom": "2026-10-27T10:17:03.432Z",
+      "expiresAt": "2026-10-27T18:17:03.432Z",
+      "validUntil": "2026-10-27T18:17:03.432Z",
+      "status": "REVOKED",
+      "isRevoked": true,
+      "revokedAt": "2026-10-27T13:17:03.432Z",
+      "revokedReason": "Security alert: Pass revoked by Security Operations Desk",
+      "notes": "Administrative revocation enforced",
+      "createdAt": "2026-10-27T10:17:03.432Z"
+    },
+    {
+      "id": "PK-8044",
+      "passNumber": "PK-8044",
+      "visitorId": "vis-4",
+      "visitorName": "Ananya Iyer",
+      "visitorPhone": "+91 97123 45678",
+      "phoneNumber": "+91 97123 45678",
+      "visitorEmail": "ananya.iyer@iitb-guest.ac.in",
+      "company": "IIT Bombay Computer Science",
+      "purpose": "Faculty Guest Seminar: Cryptographic Zero-Knowledge Protocols",
+      "allowedZones": [
+        "Main Reception",
+        "Meeting Room",
+        "Office Floor"
+      ],
+      "validFrom": "2026-10-27T16:17:03.432Z",
+      "expiresAt": "2026-10-28T00:17:03.432Z",
+      "validUntil": "2026-10-28T00:17:03.432Z",
+      "status": "UPCOMING",
+      "isRevoked": false,
+      "notes": "Keynote guest speaker - scheduled future visit",
+      "createdAt": "2026-10-27T12:17:03.432Z"
+    }
+  ],
+  "consumedTokenIds": [],
+  "audit": [
+    {
+      "id": "evt-101",
+      "timestamp": "2026-10-27T13:17:03.432Z",
+      "eventType": "PASS_ISSUED",
+      "visitorName": "Aarav Sharma",
+      "passId": "PK-8041",
+      "zone": "Main Reception",
+      "result": "INFO",
+      "outcome": "INFO",
+      "reason": "Pass issued with ECDSA P-256 digital signature for zones: Main Reception, Engineering Laboratory, Office Floor"
+    },
+    {
+      "id": "evt-102",
+      "timestamp": "2026-10-27T13:32:03.432Z",
+      "eventType": "ACCESS_GRANTED",
+      "visitorName": "Aarav Sharma",
+      "passId": "PK-8041",
+      "zone": "Main Reception",
+      "result": "GRANTED",
+      "outcome": "GRANTED",
+      "verificationMethod": "biometric",
+      "reason": "Turnstile access approved via visitor mobile biometric confirmation"
+    },
+    {
+      "id": "evt-103",
+      "timestamp": "2026-10-27T13:17:03.432Z",
+      "eventType": "PASS_REVOKED",
+      "visitorName": "Vikram Malhotra",
+      "passId": "PK-8043",
+      "zone": "Security Console",
+      "result": "INFO",
+      "outcome": "INFO",
+      "reason": "Pass revoked: Pass revoked by Security Operations Desk"
+    },
+    {
+      "id": "evt-104",
+      "timestamp": "2026-10-27T13:47:03.432Z",
+      "eventType": "ACCESS_DENIED",
+      "visitorName": "Vikram Malhotra",
+      "passId": "PK-8043",
+      "zone": "Restricted Area",
+      "result": "DENIED",
+      "outcome": "DENIED",
+      "reason": "Access rejected: Pass revoked by Security Operations Desk"
+    },
+    {
+      "id": "evt-105",
+      "timestamp": "2026-10-27T14:02:03.432Z",
+      "eventType": "ACCESS_DENIED",
+      "visitorName": "Priya Patel",
+      "passId": "PK-8042",
+      "zone": "Restricted Area",
+      "result": "DENIED",
+      "outcome": "DENIED",
+      "reason": "Access rejected: Pass expired (validity window ended)"
+    }
+  ],
+  "settings": {
+    "accessZones": [
+      "Main Reception",
+      "Office Floor",
+      "Engineering Laboratory",
+      "Meeting Room",
+      "Restricted Area"
+    ],
+    "zones": [
+      "Main Reception",
+      "Office Floor",
+      "Engineering Laboratory",
+      "Meeting Room",
+      "Restricted Area"
+    ],
+    "defaultValidityHours": 8,
+    "qrRefreshIntervalSeconds": 60,
+    "requireBiometricOrPinOnScan": true
+  },
+  "authorityKeyPair": {
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAExcUGZAGwwAYYySSNy9zWPW8w+zhT\nJX6RFXHftjxzE1J0XbJDeO0Xh9ytFiNpBVnwYtNJMZJVu5YDN1/iZvhQWw==\n-----END PUBLIC KEY-----\n",
+    "privateKeyPem": "-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgYfm7m371lz0wermw\n2AsROvcInancBZxoNnLaj+vqZT2hRANCAATFxQZkAbDABhjJJI3L3NY9bzD7OFMl\nfpEVcd+2PHMTUnRdskN47ReH3K0WI2kFWfBi00kxklW7lgM3X+Jm+FBb\n-----END PRIVATE KEY-----\n"
+  }
+}

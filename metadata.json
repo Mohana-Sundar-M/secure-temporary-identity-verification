@@ -1,0 +1,6 @@
+{
+  "name": "PASSKEY — Temporary Identity & Access",
+  "description": "Secure Temporary Digital Identity Verification System for Short-Term Access Management with phone login, on-device biometrics, 60s rotating QR tokens, and turnstile gate verification.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

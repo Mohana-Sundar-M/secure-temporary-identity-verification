@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "Visitor": {
+      "title": "Visitor Profile",
+      "description": "Visitor authentication and credential profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique Visitor ID" },
+        "name": { "type": "string", "maxLength": 100, "description": "Visitor full name" },
+        "phone": { "type": "string", "maxLength": 20, "description": "Display phone number" },
+        "phoneNormalized": { "type": "string", "maxLength": 20, "description": "Normalized phone number (digits only)" },
+        "authMethod": { "type": "string", "enum": ["biometric", "pin"], "description": "Authentication method" },
+        "pinHash": { "type": "string", "maxLength": 256, "description": "PBKDF2 PIN hash" },
+        "salt": { "type": "string", "maxLength": 64, "description": "PBKDF2 salt hex" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Registration ISO timestamp" }
+      },
+      "required": ["name", "phone", "phoneNormalized", "authMethod", "createdAt"]
+    },
+    "Pass": {
+      "title": "Access Pass",
+      "description": "Gate entry access pass issued to a visitor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique Pass ID" },
+        "visitorId": { "type": "string", "description": "Associated Visitor Profile ID" },
+        "visitorPhone": { "type": "string", "maxLength": 20, "description": "Visitor phone number" },
+        "visitorName": { "type": "string", "maxLength": 100, "description": "Visitor full name" },
+        "purpose": { "type": "string", "maxLength": 200, "description": "Visit purpose" },
+        "validFrom": { "type": "string", "format": "date-time", "description": "Pass start ISO timestamp" },
+        "validUntil": { "type": "string", "format": "date-time", "description": "Pass expiration ISO timestamp" },
+        "status": { "type": "string", "enum": ["ACTIVE", "EXPIRED", "REVOKED"], "description": "Pass lifecycle status" },
+        "signature": { "type": "string", "maxLength": 512, "description": "ECDSA P-256 digital signature in hex" },
+        "publicKeyPem": { "type": "string", "maxLength": 1024, "description": "Public key for verification" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation ISO timestamp" }
+      },
+      "required": ["visitorPhone", "visitorName", "purpose", "validFrom", "validUntil", "status", "signature", "createdAt"]
+    },
+    "Challenge": {
+      "title": "Gate Verification Challenge",
+      "description": "Realtime gate turnstile verification event",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique Challenge ID" },
+        "passId": { "type": "string", "description": "Associated Pass ID" },
+        "visitorPhone": { "type": "string", "maxLength": 20, "description": "Visitor phone number" },
+        "visitorName": { "type": "string", "maxLength": 100, "description": "Visitor name" },
+        "gateId": { "type": "string", "maxLength": 50, "description": "Gate Console identifier" },
+        "status": { "type": "string", "enum": ["PENDING", "GRANTED", "REJECTED", "TIMEOUT"], "description": "Challenge verification status" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Challenge creation timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Challenge update timestamp" }
+      },
+      "required": ["passId", "visitorPhone", "status", "createdAt", "updatedAt"]
+    },
+    "AuditLog": {
+      "title": "Gate Access Audit Log",
+      "description": "Historical log of gate access events",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Log Entry ID" },
+        "event": { "type": "string", "maxLength": 100, "description": "Event name" },
+        "passId": { "type": "string", "description": "Pass ID" },
+        "visitorName": { "type": "string", "maxLength": 100, "description": "Visitor Name" },
+        "gateId": { "type": "string", "maxLength": 50, "description": "Gate ID" },
+        "status": { "type": "string", "maxLength": 50, "description": "Verification outcome" },
+        "timestamp": { "type": "string", "format": "date-time", "description": "ISO timestamp" }
+      },
+      "required": ["event", "status", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/visitors/{visitorId}": {
+      "schema": { "$ref": "#/entities/Visitor" },
+      "description": "Visitor registration and credential profiles"
+    },
+    "/passes/{passId}": {
+      "schema": { "$ref": "#/entities/Pass" },
+      "description": "Gate access pass collection"
+    },
+    "/challenges/{challengeId}": {
+      "schema": { "$ref": "#/entities/Challenge" },
+      "description": "Realtime gate scan challenges"
+    },
+    "/auditLogs/{logId}": {
+      "schema": { "$ref": "#/entities/AuditLog" },
+      "description": "System access audit history"
+    }
+  }
+}

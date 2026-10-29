@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper Primitives
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+    function incoming() {
+      return request.resource.data;
+    }
+    function existing() {
+      return resource.data;
+    }
+
+    // Validation Helpers
+    function isValidVisitor(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.phone is string && data.phone.size() > 0 && data.phone.size() <= 20 &&
+             data.phoneNormalized is string && data.phoneNormalized.size() > 0 && data.phoneNormalized.size() <= 20 &&
+             data.authMethod in ['biometric', 'pin'] &&
+             data.createdAt is string;
+    }
+
+    function isValidPass(data) {
+      return data.visitorPhone is string && data.visitorPhone.size() > 0 && data.visitorPhone.size() <= 20 &&
+             data.visitorName is string && data.visitorName.size() > 0 && data.visitorName.size() <= 100 &&
+             data.purpose is string && data.purpose.size() > 0 && data.purpose.size() <= 200 &&
+             data.validFrom is string &&
+             data.validUntil is string &&
+             data.status in ['ACTIVE', 'EXPIRED', 'REVOKED'] &&
+             data.signature is string && data.signature.size() > 0 && data.signature.size() <= 512 &&
+             data.createdAt is string;
+    }
+
+    function isValidChallenge(data) {
+      return data.passId is string && data.passId.size() > 0 &&
+             data.visitorPhone is string && data.visitorPhone.size() > 0 &&
+             data.status in ['PENDING', 'GRANTED', 'REJECTED', 'TIMEOUT'] &&
+             data.createdAt is string &&
+             data.updatedAt is string;
+    }
+
+    function isValidAuditLog(data) {
+      return data.event is string && data.event.size() > 0 && data.event.size() <= 100 &&
+             data.status is string && data.status.size() > 0 && data.status.size() <= 50 &&
+             data.timestamp is string;
+    }
+
+    // Collection Rules
+
+    match /visitors/{visitorId} {
+      allow get, list: if true;
+      allow create: if isValidVisitor(incoming());
+      allow update: if isValidVisitor(incoming());
+      allow delete: if false;
+    }
+
+    match /passes/{passId} {
+      allow get, list: if true;
+      allow create: if isValidPass(incoming());
+      allow update: if isValidPass(incoming());
+      allow delete: if false;
+    }
+
+    match /challenges/{challengeId} {
+      allow get, list: if true;
+      allow create: if isValidChallenge(incoming());
+      allow update: if isValidChallenge(incoming());
+      allow delete: if false;
+    }
+
+    match /auditLogs/{logId} {
+      allow get, list: if true;
+      allow create: if isValidAuditLog(incoming());
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
